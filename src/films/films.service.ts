@@ -101,6 +101,20 @@ export class FilmsService {
         return movie
     }
 
+    async getByName(title: string): Promise<Film> {
+        const movie = await this.prismaService.film.findFirst({
+            where: {
+                title
+            },
+
+        })
+        if (!movie) {
+            return null
+        }
+ 
+        return movie
+    }
+
     async createVote(userId: number, id: number, value: number) {
         const vote = await this.prismaService.vote.create({
             data: {

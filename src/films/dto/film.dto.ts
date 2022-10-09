@@ -3,6 +3,8 @@ import { Decimal } from "@prisma/client/runtime";
 
 export class Film {
     @ApiProperty()
+    id: number;
+    @ApiProperty()
     title: string;
     @ApiProperty()
     original_title: string;

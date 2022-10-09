@@ -44,7 +44,7 @@ model Film {
   country           String
   release_date      String
   list              List?    @relation(fields: [listId], references: [id])
-  listId            Int?     @unique
+  listId            Int?     
   user              User     @relation(fields: [userId], references: [id])
   userId            Int
   votes             Vote[]

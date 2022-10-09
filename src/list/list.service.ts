@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime';
+import { Film } from './../films/dto/film.dto';
 import { PrismaService } from './../../prisma/service';
 import { ListNotFoundException } from './../error/error.exception';
 import { AddFilmDTO } from './dto/addFilm.dto';
@@ -16,6 +17,9 @@ export class ListService {
             data: {
                 userId,
                 ...createListDTO
+            },
+            include: {
+                films: true
             }
         })
     }
@@ -73,18 +77,34 @@ export class ListService {
         return list
     }
 
-    async addFilm(id: number, addFilmDTO: AddFilmDTO): Promise<List> {
-        return await this.prismaService.list.update({
+    async getByName(name: string): Promise<List> {
+        const list = await this.prismaService.list.findFirst({
             where: {
-                id: id
+                name
             },
             include: {
                 films: true
             },
+        })
+        if (!list) {
+            return null
+        }
+
+        return list
+    }
+
+    async addFilm(id: number, addFilmDTO: AddFilmDTO): Promise<Film> {
+        return await this.prismaService.film.update({
+            where: {
+                id: +addFilmDTO.filmId
+            },
+            include: {
+                list: true
+            },
             data: {
-                films: {
+                list: {
                     connect: {
-                        id: addFilmDTO.filmId
+                        id: id
                     }
                 }
             }

@@ -17,4 +17,6 @@ export class CreateFilmDTO {
     release_date: string;
     @ApiProperty()
     listId?: number;
+    @ApiProperty()
+    vote_average?: number;
 }

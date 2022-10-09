@@ -15,6 +15,7 @@ describe('ListController', () => {
       userId: 1
     }
   } as unknown as Request
+  
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       controllers: [ListController],
@@ -39,9 +40,8 @@ describe('ListController', () => {
   });
 
   it('/GET list by id', async () => {
-    const list = await controller.getById(40);
-    expect(list).toStrictEqual(await service.getById(40));
-
+    const list = await controller.getById(56);
+    expect(list).toStrictEqual(await service.getById(56));
   });
 
 
@@ -50,7 +50,7 @@ describe('ListController', () => {
   });
 
   it('/DELETE list by id', async () => {
-    const response = await controller.delete(1)
+    const response = await controller.delete(40)
     expect(response).toBe(response);
   });
 
@@ -60,17 +60,17 @@ describe('ListController', () => {
       "name": "List #1",
       "description": "My favorite films",
     }
-    const response = await controller.update(40, updateList);
+    const response = await controller.update(56, updateList);
 
-    expect(response).toStrictEqual(await service.getById(40));
+    expect(response).toStrictEqual(await service.getById(56));
   });
 
   it('/add film to list by id', async () => {
     const addFilm: AddFilmDTO = {
       "filmId": 5,  
     }
-    const response = await controller.addFilm(40, addFilm); 
-    const list = await service.getById(40); 
+    const response = await controller.addFilm(56, addFilm); 
+    const list = await service.getById(56); 
 
     expect(response).toStrictEqual(list);
   });

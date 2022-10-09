@@ -30,8 +30,8 @@ describe('ListService', () => {
   });
 
   it('list by id', async () => {
-    const list = await service.getById(40);
-    expect(list).toStrictEqual(await service.getById(40));
+    const list = await service.getById(56);
+    expect(list).toStrictEqual(await service.getById(56));
   });
 
 
@@ -40,7 +40,7 @@ describe('ListService', () => {
     expect(await service.get()).toStrictEqual(lists);
   });
 
-  it('list by id', async () => {
+  it('delete list by id', async () => {
     const response = await service.delete(6)
     expect(response).toBe(response);
   });
@@ -51,18 +51,18 @@ describe('ListService', () => {
       "name": "List #1", 
       "description": "My favorite films",
     }
-    const response = await service.update(40, updateList);
+    const response = await service.update(56, updateList);
 
-    expect(response).toStrictEqual(await service.getById(40));
+    expect(response).toStrictEqual(await service.getById(56));
   });
 
   it('add film to list by id', async () => {
     const addFilm: AddFilmDTO = {
       "filmId": 5,  
     }
-    const response = await service.addFilm(40, addFilm);
+    const response = await service.addFilm(56, addFilm);
   
-    expect(response).toStrictEqual(await service.getById(40));
+    expect(response).toStrictEqual(await service.getById(56));
   });
 
 });

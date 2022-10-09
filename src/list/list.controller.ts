@@ -1,5 +1,6 @@
 import { Body, Controller, Delete, Get, Param, Post, Put, Request, UseGuards } from '@nestjs/common';
 import { ApiCreatedResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
+import { Film } from './../films/dto/film.dto';
 import { JwtAuthGuard } from './../auth/jwt/jwt.auth.guard';
 import { AddFilmDTO } from './dto/addFilm.dto';
 import { CreateListDTO } from './dto/createList.dto';
@@ -59,7 +60,7 @@ export class ListController {
         description: 'The film add to list.',
         type: List,
     })
-    async addFilm(@Param('id') id: number, @Body() addFilmDTO: AddFilmDTO): Promise<List> {
+    async addFilm(@Param('id') id: number, @Body() addFilmDTO: AddFilmDTO): Promise<Film> {
         return await this.listService.addFilm(+id, addFilmDTO);
     }
 
