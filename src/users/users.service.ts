@@ -1,8 +1,8 @@
 import { Injectable, UseFilters } from '@nestjs/common';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime';
-import { PrismaService } from 'prisma/service';
-import { UserArleadyExistException, UserNotFoundException } from 'src/error/error.exception';
-import { HttpExceptionFilter } from 'src/error/error.filter';
+import { PrismaService } from './../../prisma/service';
+import { UserArleadyExistException, UserNotFoundException } from './../error/error.exception';
+import { HttpExceptionFilter } from './../error/error.filter';
 import { CreateUserDTO } from './dto/createUser.dto';
 import { UpdateUserDTO } from './dto/updateUser.dto';
 import { User } from './dto/user.dto';
@@ -28,7 +28,7 @@ export class UsersService {
 
     async getByEmail(email: string) {
         try {
-            return await this.prismaService.user.findUniqueOrThrow({
+            return await this.prismaService.user.findFirst({
                 where: {
                     email
                 }

@@ -1,8 +1,8 @@
 import { Body, Controller, Delete, Get, Param, Post, Put, Request, UseGuards } from '@nestjs/common';
 import { ApiCreatedResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime';
-import { JwtAuthGuard } from 'src/auth/jwt/jwt.auth.guard';
-import { MovieArleadyExistException } from 'src/error/error.exception';
+import { JwtAuthGuard } from './../auth/jwt/jwt.auth.guard';
+import { MovieArleadyExistException } from './../error/error.exception';
 import { CreateFilmDTO } from './dto/createFilm.dto';
 import { Film } from './dto/film.dto';
 import { UpdateFilmDTO } from './dto/updateFilm.dto';
@@ -44,7 +44,7 @@ export class FilmsController {
         description: 'Get top 100 films.',
         type: [Film],
     })
-    async getTop(@Request() req): Promise<Film[]> {
+    async getTop(): Promise<Film[]> {
         return await this.filmsService.getTop();
     }
  

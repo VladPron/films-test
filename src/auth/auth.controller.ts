@@ -1,8 +1,8 @@
 import { Body, Controller, Post, Request, UseGuards } from '@nestjs/common';
-import { CreateUserDTO } from 'src/users/dto/createUser.dto';
+import { CreateUserDTO } from './../users/dto/createUser.dto';
 import { AuthService } from './auth.service';
 import { SignIn, SignInDTO } from './dto/signIn.dto';
-import { User } from 'src/users/dto/user.dto';
+import { User } from './../users/dto/user.dto';
 import { ApiCreatedResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
 
 @ApiTags('auth')

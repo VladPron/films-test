@@ -36,3 +36,9 @@ export class MovieArleadyExistException extends HttpException {
         super("The movie already exist", 409)
     }
 }
+
+export class ListNotFoundException extends HttpException {
+    constructor() {
+        super("The list with the requested identifier does not exist", 404)
+    }
+}

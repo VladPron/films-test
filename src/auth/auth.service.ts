@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common';
-import { CreateUserDTO } from 'src/users/dto/createUser.dto';
-import { UsersService } from 'src/users/users.service';
+import { CreateUserDTO } from './../users/dto/createUser.dto';
+import { UsersService } from './../users/users.service';
 import { SignIn, SignInDTO } from './dto/signIn.dto';
 import * as bcrypt from 'bcrypt';
-import { User } from 'src/users/dto/user.dto';
-import { UserNotFoundException, WrongCredentialsException } from 'src/error/error.exception';
+import { User } from './../users/dto/user.dto';
+import { UserNotFoundException, WrongCredentialsException } from './../error/error.exception';
 import { JwtService } from '@nestjs/jwt';
 
 @Injectable()

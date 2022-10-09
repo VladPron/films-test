@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime';
-import { PrismaService } from 'prisma/service';
-import { MovieNotFoundException } from 'src/error/error.exception';
+import { PrismaService } from './../../prisma/service';
+import { MovieNotFoundException } from './../error/error.exception';
 import { CreateFilmDTO } from './dto/createFilm.dto';
 import { Film } from './dto/film.dto';
 import { UpdateFilmDTO } from './dto/updateFilm.dto';
