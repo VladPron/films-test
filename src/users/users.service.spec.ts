@@ -19,17 +19,16 @@ describe('UsersService', () => {
   });
 
   it('Delete user by id', async () => {
-    const response = await service.delete(21)
+    const response = await service.delete(21);
     expect(response).toBe(response);
-  })
-
+  });
 
   it('Update user by id', async () => {
-    const updateUser: UpdateUserDTO ={
-      "firstName": "New first name",
-      "lastName": "New last name"
-    }
-    const response = await service.update(16, updateUser)
+    const updateUser: UpdateUserDTO = {
+      firstName: 'New first name',
+      lastName: 'New last name',
+    };
+    const response = await service.update(16, updateUser);
     expect(response).toBe(response);
-  })
+  });
 });
