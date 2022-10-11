@@ -29,19 +29,17 @@ export class MovieDBService {
         name: data.name,
         description: data.description,
       });
-    }
-
+    } 
     await Promise.all(
       data.items.map(async (movie) => {
-        let film = await this.filmService.getByName(movie.title);
+        const { data } = await this.mdb.movie.getDetails({
+          pathParameters: { movie_id: movie.id },
+        }); 
+        let film = await this.filmService.getByName(data.title);
 
         if (!film) {
-          const { data } = await this.mdb.movie.getDetails({
-            pathParameters: { movie_id: movie.id },
-          });
-
           const createDTO: CreateFilmDTO = {
-            title: data.title,
+            title: data?.title,
             original_language: data.original_language,
             original_title: data.original_title,
             poster_path: data.homepage + data.poster_path.replace('/', ''),
