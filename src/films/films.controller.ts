@@ -9,7 +9,7 @@ import {
   Request,
   UseGuards,
 } from '@nestjs/common';
-import { ApiCreatedResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiCreatedResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime';
 import { JwtAuthGuard } from '../auth/jwt/jwt.auth.guard';
 import { MovieArleadyExistException } from '../error/error.exception';
@@ -20,6 +20,7 @@ import { VoteDTO } from './dto/vote.dto';
 import { FilmsService } from './films.service';
 
 @ApiTags('films')
+@ApiBearerAuth()
 @Controller('films')
 @UseGuards(JwtAuthGuard)
 export class FilmsController {

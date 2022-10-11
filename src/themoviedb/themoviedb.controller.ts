@@ -1,10 +1,11 @@
 import { Controller, Get, Param, UseGuards, Request } from '@nestjs/common';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { JwtAuthGuard } from '../auth/jwt/jwt.auth.guard';
 import { MovieDBService } from './themoviedb.service';
 import { List } from '../list/dto/list.dto';
 
 @ApiTags('themoviedb')
+@ApiBearerAuth()
 @Controller('themoviedb')
 @UseGuards(JwtAuthGuard)
 export class ThemoviedbController {

@@ -9,7 +9,7 @@ import {
   Request,
   UseGuards,
 } from '@nestjs/common';
-import { ApiCreatedResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiCreatedResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { Film } from '../films/dto/film.dto';
 import { JwtAuthGuard } from '../auth/jwt/jwt.auth.guard';
 import { AddFilmDTO } from './dto/addFilm.dto';
@@ -19,6 +19,7 @@ import { UpdateListDTO } from './dto/updateList.dto';
 import { ListService } from './list.service';
 
 @ApiTags('list')
+@ApiBearerAuth()
 @Controller('list')
 @UseGuards(JwtAuthGuard)
 export class ListController {
